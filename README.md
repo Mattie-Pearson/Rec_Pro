@@ -44,3 +44,12 @@ While Power:
 		Elif Score
 		Elif Settings
 		Else Ask again
+
+
+----------------------------
+Menu():
+clear_screen()
+Welcome print
+
+####while selected (power).. Move to outside? Power() while then Menu sits inside?
+
