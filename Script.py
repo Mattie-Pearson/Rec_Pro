@@ -42,8 +42,9 @@ def Menu():
             options[player_input]()
         except KeyError:
             print("Cannot call. The key does not exist.\n")
-            player_input = None
-
+            continue
+        except:
+            print("Something else went wrong")
 
 
 

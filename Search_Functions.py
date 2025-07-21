@@ -1,7 +1,7 @@
 from difflib import SequenceMatcher as Match
 from Coffee_Data import Coffee_Spots
 import math
-
+from Script import wait
 ### Search by Name ###
 def search_name():
     print("Please enter the name of the shop you would like to search for.\n")
@@ -39,24 +39,62 @@ def search_name():
 
 ### Search by Distance ###
 def search_dist():
+
+    dist = { 
+        "close": [],
+        "far": []
+    }
+
+    for k,v in Coffee_Spots.items():
+        #Check if close
+        if v[0]['min'] <= 20:
+            dist["close"].append(k)
+        #Else add to far
+        else:
+            dist["far"].append(k)
+     
     print("Please enter how far you're okay with going for recommendations. 'Close' for any place within 20 minutes and 'Far' for any place over 20 minutes.")
     player_input = input("Close or Far? ")
-    dist = {}
-    for k,v in Coffee_Spots.items():
-        if v[0]['min'] <= 20:
-            dist["close"] += k
-        else:
-            dist["far"] += k
-    print(dist)
-     
-        #### Have a prompt that asks if user wants more information.. Should probably set up a system to hold the information of the recs that do pass and get printed. 
-        #### That way not going through the whole dict again.
+    moreinfo_key = player_input
+##TD ### Have a prompt that asks if user wants more information.. Should probably set up a system to hold the information of the recs that do pass and get printed. 
+    #### That way not going through the whole dict again.
+    print(dist[player_input.lower()])
+    player_input = input("Would you like more information on one of these? Y or N")
+
+    if player_input.lower() == 'y':
+        on = 1
+        while on == 1:
+
+### TO DO   #### As data expands, this will have to be refactored to account for the fact that there could be more than 2 options.
+            #### range(len(dist[moreinfo_key]))
+            #### input("Which would you like more information on? {0}".format((str(n) + ", " for n in range(len(dist[moreinfor_key]))))) ? 
+
+            player_input = input("Which would you like more information on? 1 or 2. ")
+            if player_input == "1":
+                print("You've chosen to have more information on {0}".format(dist[moreinfo_key][0]))
+### TO DO       #### fix up the way these are printed out so they're prettier
+                print(Coffee_Spots[dist[moreinfo_key][0]])
+            elif player_input == "2":
+                print("You've chosen to have more information on {0}".format(dist[moreinfo_key][1]))
+                print(Coffee_Spots[dist[moreinfo_key][1]])
+            else:
+                print("Please enter a valid answer")
+                continue
+            player_input = input("Would you like to see the information for another? Y or N")
+            if player_input.lower() == "y":
+                continue
+            elif player_input.lower() == "n":
+                on = 0
+                print("Returning to Main Menu")
+                wait()
+    elif player_input.lower() == "n":
+        return
+            
 
 
 ### Search by Score ###
 def search_score():
-    scores = list(range(1,6))
-    player_input = input("To search by score, enter one, all, or none of the following options: " + str(scores) +".\nExample: entering 1 and 2 will only return options with scores of 1 or 2.\nPressing Enter without typing anything will return all shops in order of worst to best score.\n\nSearch: ")
+    player_input = input("To search by score, enter one, all, or none of the following options: " + str(list(range(1,6))) +".\nExample: entering 1 and 2 will only return options with scores of 1 or 2.\nPressing Enter without typing anything will return all shops in order of worst to best score.\n\nSearch: ")
     player_input = [e for e in player_input if e.isdigit()]
     print(player_input)
     shops_list = []
