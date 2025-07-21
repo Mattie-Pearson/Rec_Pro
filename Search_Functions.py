@@ -34,7 +34,7 @@ def search_name():
             return print(e)
 ##### TO DO: Everything below here needs to be looked at again. Probably could be cleaned up a bit on a single pass
         elif match_val in range(25, 59):
-            print("Did you mean " + e + "? Y or N")
+            print("Did you mean " + e + "? Y or N.\nInput: ")
             answer = input()
             if answer.lower() == "y":
                 return print(e)
@@ -65,7 +65,7 @@ def search_dist():
     player_input = input("Close or Far? ")
     moreinfo_key = player_input
     print(dist[player_input.lower()])
-    player_input = input("Would you like more information on one of these? Y or N")
+    player_input = input("Would you like more information on one of these? Y or N.\nInput: ")
 
     if player_input.lower() == 'y':
         on = 1
@@ -75,7 +75,7 @@ def search_dist():
             #### range(len(dist[moreinfo_key]))
             #### input("Which would you like more information on? {0}".format((str(n) + ", " for n in range(len(dist[moreinfor_key]))))) ? 
 
-            player_input = input("Which would you like more information on? 1 or 2. ")
+            player_input = input("Which would you like more information on? 1 or 2.\nInput: ")
             if player_input == "1":
                 print("You've chosen to have more information on {0}".format(dist[moreinfo_key][0]))
 ### TO DO       #### fix up the way these are printed out so they're prettier
@@ -86,7 +86,7 @@ def search_dist():
             else:
                 print("Please enter a valid answer")
                 continue
-            player_input = input("Would you like to see the information for another? Y or N")
+            player_input = input("Would you like to see the information for another? Y or N.\nInput: ")
             if player_input.lower() == "y":
                 continue
             elif player_input.lower() == "n":
@@ -94,7 +94,12 @@ def search_dist():
                 print("Returning to Main Menu")
                 wait()
     elif player_input.lower() == "n":
-        return
+        player_input = input("Would you like to return to the Main Menu? Y or N.\nInput: ")
+        if player_input.lower() == "y":
+            print("Returning")
+            wait()
+        elif player_input.lower() == "n":
+            search_dist()
             
 
 
@@ -102,12 +107,20 @@ def search_dist():
 def search_score():
     player_input = input("To search by score, enter one, all, or none of the following options: " + str(list(range(1,6))) +".\nExample: entering 1 and 2 will only return options with scores of 1 or 2.\nPressing Enter without typing anything will return all shops in order of worst to best score.\n\nSearch: ")
     player_input = [e for e in player_input if e.isdigit()]
-    print(player_input)
     shops_list = []
 ##### Push goal - have it check to see what scores are in the list, that way if a user selects a score to view that is not contained in the list, it returns that there are no recommendations with a score of x
 ##### 
-    for e in player_input:
-        for s,score in Coffee_Spots.items():
-            print(s, score[1])
-            if int(e) == math.floor(float(score[1])):    
-                print(math.floor(float(score[1])))
+    if player_input:
+        for e in player_input:
+            for s,score in Coffee_Spots.items():
+                print(s, score[1])
+                if int(e) == math.floor(float(score[1])):    
+                    print(math.floor(float(score[1])))
+    else:
+        player_input = input("Please input a valid answer. If you would like to exit, enter return. Otherwise press enter.\nInput: ")
+        if player_input.lower() == "return":
+            wait()
+            return
+        elif player_input == "":
+            wait()
+            search_score()
