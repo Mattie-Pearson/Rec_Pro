@@ -41,10 +41,16 @@ def search_name():
 def search_dist():
     print("Please enter how far you're okay with going for recommendations. 'Close' for any place within 20 minutes and 'Far' for any place over 20 minutes.")
     player_input = input("Close or Far? ")
-    if player_input.lower() == 'close':
-        for k,v in Coffee_Spots.items():
-            ##### Will need to adjust the way the data is stored so that I can compare it with how close or far user will go
-            pass
+    dist = {}
+    for k,v in Coffee_Spots.items():
+        if v[0]['min'] <= 20:
+            dist["close"] += k
+        else:
+            dist["far"] += k
+    print(dist)
+     
+        #### Have a prompt that asks if user wants more information.. Should probably set up a system to hold the information of the recs that do pass and get printed. 
+        #### That way not going through the whole dict again.
 
 
 ### Search by Score ###
