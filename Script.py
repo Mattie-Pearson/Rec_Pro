@@ -1,16 +1,10 @@
 import os
 import time
-from Search_Functions import search_name, search_dist, search_score
+from Search_Functions import search_name, search_dist, search_score, wait
 
 ### Clear Screen function
 def clear_screen():
     os.system('cls')
-
-### Time Sleep function
-def wait():
-    for s in range(0,3):
-        print(".")
-
 
 ### Menu options
 options = {

@@ -1,7 +1,15 @@
 from difflib import SequenceMatcher as Match
 from Coffee_Data import Coffee_Spots
 import math
-from Script import wait
+
+
+
+### Time Sleep function
+def wait():
+    for s in range(0,3):
+        print(".")
+
+
 ### Search by Name ###
 def search_name():
     print("Please enter the name of the shop you would like to search for.\n")
@@ -17,14 +25,14 @@ def search_name():
     #----------#
 
     #find common characters/ basic logic for suggestor
-    ##### TO DO: Clean up. Logic basically works fine, but need to add/fix up the functionality.
+##### TO DO: Clean up. Logic basically works fine, but need to add/fix up the functionality.
     search_length = len(search)
     for e in Coffee_Spots.keys():
         match_val = math.floor(Match(None, e, search).ratio()*100)
         print(match_val)
         if match_val >= 60:
             return print(e)
-##### Everything below here needs to be looked at again. Probably could be cleaned up a bit on a single pass
+##### TO DO: Everything below here needs to be looked at again. Probably could be cleaned up a bit on a single pass
         elif match_val in range(25, 59):
             print("Did you mean " + e + "? Y or N")
             answer = input()
@@ -56,8 +64,6 @@ def search_dist():
     print("Please enter how far you're okay with going for recommendations. 'Close' for any place within 20 minutes and 'Far' for any place over 20 minutes.")
     player_input = input("Close or Far? ")
     moreinfo_key = player_input
-##TD ### Have a prompt that asks if user wants more information.. Should probably set up a system to hold the information of the recs that do pass and get printed. 
-    #### That way not going through the whole dict again.
     print(dist[player_input.lower()])
     player_input = input("Would you like more information on one of these? Y or N")
 
