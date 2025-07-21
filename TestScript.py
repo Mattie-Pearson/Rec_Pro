@@ -2,6 +2,19 @@ from Coffee_Data import Coffee_Spots
 from pynput import keyboard
 import os
 
+
+#
+##
+####
+###### This script hasn't been updated since it was created. First to do will be to clear 
+###### the information that's currently here and replace it with the up-to-date information
+###### that is in Script.py
+###### The overall goal here will be to create and implement keyboard.Listener and input
+####
+##
+#
+
+
 #for key, value in Coffee_Spots.items():
 #    pass
 
