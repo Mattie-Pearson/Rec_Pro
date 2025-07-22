@@ -1,5 +1,5 @@
 from difflib import SequenceMatcher as Match
-from Coffee_Data import Coffee_Spots
+from coffee_data import coffee_spots
 import math
 
 
@@ -14,7 +14,7 @@ def wait():
 def search_name():
     print("Please enter the name of the shop you would like to search for.\n")
     search = input("Shop name:")
-    shop_names = [k for k in Coffee_Spots.keys()]
+    shop_names = [k for k in coffee_spots.keys()]
     print(search)
     print(shop_names)
     

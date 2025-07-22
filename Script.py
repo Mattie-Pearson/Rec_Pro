@@ -1,6 +1,6 @@
 import os
 import time
-from Search_Functions import search_name, search_dist, search_score, wait
+from search_functions import search_name, search_dist, search_score, wait
 
 ### Clear Screen function
 def clear_screen():
@@ -13,7 +13,7 @@ options = {
 
 ### Main Menu ###
 def Menu():
-    clear_screen()
+    #clear_screen()
     selected = 0
     print("Welcome to the Main Menu of Recommendation Pro! Enter 1, 2, or 3 to select an option:\n")
     while selected == 0:

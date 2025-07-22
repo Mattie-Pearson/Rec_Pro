@@ -1,8 +1,19 @@
 # Rec_Pro
 Recommendation Program
 
-### Did you make sure there's a venv?
-A venv python interpreter needs to be set up if one isn't alreadygit
+### Initialization/connection to Repository
+Need to correct for creating branches so as not to screw up origin
+- Open a fresh window
+- In terminal, type and enter each line
+	- git init
+	- git remote add origin https://github.com/user_name/Rec_Pro.git
+	- At the bottom of this README add name and date then git add README.md
+	- git commit -m "Initial commit"
+	- git push
+		- browser will pop up prompting authentication
+
+### Interpreter
+Make sure you have a Python interpreter installed. Once done, you'll be able to run the program in terminal
 
 ### Running the program
 Open a new terminal
@@ -12,3 +23,5 @@ Type <& C:\Workplace\Rec_Pro-main\.venv\Scripts\python.exe c:/Workplace/Rec_Pro-
 
 ## Quit the program
 You can end the program at any time using <Ctrl + C>
+----------------
+### Overview of files
