@@ -15,7 +15,6 @@ def search_name():
     print("Please enter the name of the shop you would like to search for.\n")
     search = input("Shop name:")
     shop_names = [k for k in coffee_spots.keys()]
-    print(search)
     print(shop_names)
     
     ##### Idea: on refactor, add in a suggestor. If user enters most of a name right, when program searching for name and doesn't
@@ -31,18 +30,18 @@ def search_name():
         match_val = math.floor(Match(None, e, search).ratio()*100)
         print(match_val)
         if match_val >= 60:
-            return print(e)
+            return print("{0} is {1} minutes away and has a score of {2}\n".format(e, coffee_spots[e][0]['min'], coffee_spots[e][1]))
 ##### TO DO: Everything below here needs to be looked at again. Probably could be cleaned up a bit on a single pass
         elif match_val in range(25, 59):
-            print("Did you mean " + e + "? Y or N.\nInput: ")
-            answer = input()
+            answer = input("Did you mean " + e + "? Y or N.\nInput: ")
             if answer.lower() == "y":
-                return print(e)
+                print("Awesome! {0} is {1} minutes away and has a score of {2}\n".format(e, coffee_spots[e][0]['min'], coffee_spots[e][1]))
+                return
             elif answer.lower() == "n":
+                #### Maybe add logic here later? Or just print all of the names and recurse
+                print("check")
                 continue
-    
-    print("I'm sorry, there are no shops that match.")
-    #### I'm wanting to compare strings to see just how
+                
 
 
 ### Search by Distance ###
@@ -116,6 +115,8 @@ def search_score():
                 print(s, score[1])
                 if int(e) == math.floor(float(score[1])):    
                     print(math.floor(float(score[1])))
+                else:
+                    print("No shops with a score of {e} are available".format(e=e))
     else:
         player_input = input("Please input a valid answer. If you would like to exit, enter return. Otherwise press enter.\nInput: ")
         if player_input.lower() == "return":
