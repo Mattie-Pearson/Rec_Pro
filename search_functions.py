@@ -27,7 +27,7 @@ def search_name():
     #find common characters/ basic logic for suggestor
 ##### TO DO: Clean up. Logic basically works fine, but need to add/fix up the functionality.
     search_length = len(search)
-    for e in Coffee_Spots.keys():
+    for e in coffee_spots.keys():
         match_val = math.floor(Match(None, e, search).ratio()*100)
         print(match_val)
         if match_val >= 60:
@@ -53,7 +53,7 @@ def search_dist():
         "far": []
     }
 
-    for k,v in Coffee_Spots.items():
+    for k,v in coffee_spots.items():
         #Check if close
         if v[0]['min'] <= 20:
             dist["close"].append(k)
@@ -79,10 +79,10 @@ def search_dist():
             if player_input == "1":
                 print("You've chosen to have more information on {0}".format(dist[moreinfo_key][0]))
 ### TO DO       #### fix up the way these are printed out so they're prettier
-                print(Coffee_Spots[dist[moreinfo_key][0]])
+                print(coffee_spots[dist[moreinfo_key][0]])
             elif player_input == "2":
                 print("You've chosen to have more information on {0}".format(dist[moreinfo_key][1]))
-                print(Coffee_Spots[dist[moreinfo_key][1]])
+                print(coffee_spots[dist[moreinfo_key][1]])
             else:
                 print("Please enter a valid answer")
                 continue
@@ -112,7 +112,7 @@ def search_score():
 ##### 
     if player_input:
         for e in player_input:
-            for s,score in Coffee_Spots.items():
+            for s,score in coffee_spots.items():
                 print(s, score[1])
                 if int(e) == math.floor(float(score[1])):    
                     print(math.floor(float(score[1])))
