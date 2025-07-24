@@ -15,25 +15,17 @@ def search_name():
     print("Please enter the name of the shop you would like to search for.\n")
     search = input("Shop name:")
     shop_names = [k for k in coffee_spots.keys()]
-    print(shop_names)
-    
-    ##### Idea: on refactor, add in a suggestor. If user enters most of a name right, when program searching for name and doesn't
-    ##### find exact match but close matches, will ask "where you looking for..." <provide close matches>
-    ##### User will then have the option to select one of the provided suggestions if it matches what they were looking for
-
-    #----------#
-
-    #find common characters/ basic logic for suggestor
-##### TO DO: Clean up. Logic basically works fine, but need to add/fix up the functionality.
     search_length = len(search)
+
     for e in coffee_spots.keys():
         match_val = math.floor(Match(None, e, search).ratio()*100)
         print(match_val)
+
         if match_val >= 60:
             return print("{0} is {1} minutes away and has a score of {2}\n".format(e, coffee_spots[e][0]['min'], coffee_spots[e][1]))
-##### TO DO: Everything below here needs to be looked at again. Probably could be cleaned up a bit on a single pass
         elif match_val in range(25, 59):
             answer = input("Did you mean " + e + "? Y or N.\nInput: ")
+
             if answer.lower() == "y":
                 print("Awesome! {0} is {1} minutes away and has a score of {2}\n".format(e, coffee_spots[e][0]['min'], coffee_spots[e][1]))
                 return
@@ -69,15 +61,10 @@ def search_dist():
     if player_input.lower() == 'y':
         on = 1
         while on == 1:
-
-### TO DO   #### As data expands, this will have to be refactored to account for the fact that there could be more than 2 options.
-            #### range(len(dist[moreinfo_key]))
-            #### input("Which would you like more information on? {0}".format((str(n) + ", " for n in range(len(dist[moreinfor_key]))))) ? 
-
             player_input = input("Which would you like more information on? 1 or 2.\nInput: ")
+
             if player_input == "1":
                 print("You've chosen to have more information on {0}".format(dist[moreinfo_key][0]))
-### TO DO       #### fix up the way these are printed out so they're prettier
                 print(coffee_spots[dist[moreinfo_key][0]])
             elif player_input == "2":
                 print("You've chosen to have more information on {0}".format(dist[moreinfo_key][1]))
@@ -86,6 +73,7 @@ def search_dist():
                 print("Please enter a valid answer")
                 continue
             player_input = input("Would you like to see the information for another? Y or N.\nInput: ")
+
             if player_input.lower() == "y":
                 continue
             elif player_input.lower() == "n":
@@ -94,6 +82,7 @@ def search_dist():
                 wait()
     elif player_input.lower() == "n":
         player_input = input("Would you like to return to the Main Menu? Y or N.\nInput: ")
+        
         if player_input.lower() == "y":
             print("Returning")
             wait()
@@ -107,18 +96,19 @@ def search_score():
     player_input = input("To search by score, enter one, all, or none of the following options: " + str(list(range(1,6))) +".\nExample: entering 1 and 2 will only return options with scores of 1 or 2.\nPressing Enter without typing anything will return all shops in order of worst to best score.\n\nSearch: ")
     player_input = [e for e in player_input if e.isdigit()]
     shops_list = []
-##### Push goal - have it check to see what scores are in the list, that way if a user selects a score to view that is not contained in the list, it returns that there are no recommendations with a score of x
-##### 
+
     if player_input:
         for e in player_input:
             for s,score in coffee_spots.items():
                 print(s, score[1])
+
                 if int(e) == math.floor(float(score[1])):    
                     print(math.floor(float(score[1])))
                 else:
                     print("No shops with a score of {e} are available".format(e=e))
     else:
         player_input = input("Please input a valid answer. If you would like to exit, enter return. Otherwise press enter.\nInput: ")
+        
         if player_input.lower() == "return":
             wait()
             return
