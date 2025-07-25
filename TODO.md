@@ -1,6 +1,14 @@
 #### To Do List
 Ordered by file (for now)
 
+General thoughts/ideas:
+- Be able to web scrape?
+    - https://www.geeksforgeeks.org/python/python-web-scraping-tutorial/
+    - https://stackoverflow.com/questions/66633875/how-to-get-data-from-a-webpage-using-python
+    - https://www.youtube.com/watch?v=1PCWwK0AsE0
+    
+
+
 ### coffee_data.py
 None
 
