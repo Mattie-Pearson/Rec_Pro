@@ -6,7 +6,7 @@ General thoughts/ideas:
     - https://www.geeksforgeeks.org/python/python-web-scraping-tutorial/
     - https://stackoverflow.com/questions/66633875/how-to-get-data-from-a-webpage-using-python
     - https://www.youtube.com/watch?v=1PCWwK0AsE0
-    
+
 
 
 ### coffee_data.py
@@ -29,7 +29,7 @@ To Dos:
 
 - search_score()
     - have it check to see what scores are in the list, that way if a user selects a score to view that is not contained in the list, it returns that there are no recommendations with a score of x without having to iterate through the entire list. cache the information so retrieval is easy.
-
+    - PRIORITY --> Need to set up functionality for it printing every shop in order from worst score to best
 
 
 Ideas:

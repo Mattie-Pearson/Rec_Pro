@@ -94,10 +94,25 @@ def search_dist():
 ### Search by Score ###
 def search_score():
     player_input = input("To search by score, enter one, all, or none of the following options: " + str(list(range(1,6))) +".\nExample: entering 1 and 2 will only return options with scores of 1 or 2.\nPressing Enter without typing anything will return all shops in order of worst to best score.\n\nSearch: ")
+
+
+    if player_input == "":
+        print("Needs to print all stores in order worst to best.")
+        store_scores = [(s,score[1]) for s,score in coffee_spots.items()]
+        order = []
+        for e in store_scores:
+            order.append(e[1])
+        print(order)
+            
+    
+
     player_input = [e for e in player_input if e.isdigit()]
     shops_list = []
+    x = list(range(1,6))
+    print(x)
 
     if player_input:
+        print("contains")
         for e in player_input:
             for s,score in coffee_spots.items():
                 print(s, score[1])
@@ -106,6 +121,8 @@ def search_score():
                     print(math.floor(float(score[1])))
                 else:
                     print("No shops with a score of {e} are available".format(e=e))
+    elif player_input == []:
+        print("empty")
     else:
         player_input = input("Please input a valid answer. If you would like to exit, enter return. Otherwise press enter.\nInput: ")
         
