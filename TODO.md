@@ -18,7 +18,7 @@ None
 ### search_functions.py
 To Dos:
 - search_name() 
-    - General cleanup. Logic basically wortks find but need to add and fix functionality. 
+    - General cleanup. Logic basically works find but need to add and fix functionality. 
     - Cleanup specifically after <elif match_val in range...> 
 
 - search_dist() 

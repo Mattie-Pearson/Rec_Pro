@@ -15,26 +15,27 @@ def Menu():
     #clear_screen()
     selected = 0
     while selected == 0:
-        print("Welcome to the Main Menu of Recommendation Pro! Enter 1, 2, or 3 to select an option:\n")
+        print("\nWelcome to the Main Menu of Recommendation Pro! Enter 1, 2, or 3 to select an option:\n")
         sub_menus = []
         for k in options.keys():
             print(k) ### Remove when finished
             sub_menus.append(k)
-        player_input = int(input("\nPlayer selection: "))
+        player_selection = int(input("\nPlayer selection: "))
         try:
-            player_input = sub_menus[(player_input - 1)]
+            player_selection = sub_menus[(player_selection - 1)]
         except IndexError:
             print("Index is out of range. Please enter a valid option.\n")
             continue
         except:
             print("Something else went wrong")
         try:
-            callable(options[player_input])
-            print("You have selected  " + player_input)
+            callable(options[player_selection])
+            print("You have selected  " + player_selection)
             wait()
-            options[player_input]()
+            options[player_selection]()
         except KeyError:
-            print("Cannot call. The key does not exist.\n")
+            print("Cannot call. The key does not exist.\nPotentially booted out of the function back to menu.")
+            print(player_selection)
             continue
         except:
             print("Something else went wrong")
